@@ -1,9 +1,6 @@
 package guru.springframework.spring5webapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -14,6 +11,7 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 
     public Author() {
@@ -25,11 +23,11 @@ public class Author {
         this.books = books;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
